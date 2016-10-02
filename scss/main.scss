@@ -1,0 +1,525 @@
+@charset "utf-8";
+@import "variables";
+
+@font-face {
+    font-family: 'AlegreyaSans';
+    src: url('../font/AlegreyaSans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    /* Setting the parameters for the whole website for all views */
+    font-family: 'AlegreyaSans', sans-serif;
+}
+
+*, *:before, *:after {
+    @include box-sizing-border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    @include box-sizing-border-box;
+    color: $main-text-color;
+    font-size: 16px;
+}
+
+body {
+    display: table;
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    height: 100%;
+    text-align: center;
+    background-image: url('../images/dimension.png');
+    margin: 0;
+    padding: 0;
+    padding-bottom: 20px;
+    top: 0;
+    background-repeat: repeat;
+    color: $main-text-color;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+a, img {
+    border: none;
+    outline: none;
+}
+
+input,
+select,
+textarea {
+    padding: 8px 10px;
+    @include border-radius($default-border-radius);
+    color: $main-text-color;
+    font-size: 16px;
+}
+
+h1 {
+    background-color: $main-color;
+    line-height: 1.6em;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.6em;
+    border-bottom: 2px solid $dark-main-color;
+    @include top-left-corner-radius($default-border-radius);
+    @include top-right-corner-radius($default-border-radius);
+}
+
+h2 {
+    color: $main-color;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin: 20px auto;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+textarea {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    @include box-sizing-border-box;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    color: $main-text-color;
+
+    &:focus {
+        box-shadow: 0 0 5px $main-color;
+        border: 1px solid $main-color;
+        color: $main-text-color;
+    }
+}
+
+select {
+    margin: 0;
+    @include border-radius($default-border-radius);
+    border: 1px solid #cccccc;
+    min-width: 50px;
+    padding-right: 24px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(../images/down-arrow.png) 98% / 16px no-repeat $white-color;
+    background-color: #white-color;
+    outline: none;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &:focus {
+        box-shadow: 0 0 5px $main-color;
+        border: 1px solid $main-color;
+    }
+
+    &[disabled] {
+        color: #cccccc;
+    }
+}
+
+.button {
+    padding: 8px 16px 7px 16px;
+    width: auto;
+    background: $main-color;
+    border-top: 1px solid $main-color; 
+    border-bottom: 2px solid $dark-main-color; 
+    display: inline-block;
+    color: #ffffff;
+    text-transform: none;
+    @include border-radius($default-border-radius);
+    cursor: pointer;
+    @extend .noselect;
+
+    &:hover{
+        background: $dark-main-color;
+    }
+
+    &:active {
+        color: #dddddd;
+    }
+}
+
+.table-wrapper {
+    margin: 10px auto 20px auto;
+
+    .table-heading {
+        @include bottom-left-corner-radius(0);
+        @include bottom-right-corner-radius(0);
+        background: $white-color;
+        color: $main-color;
+        border: none;
+        @include box-shadow(0, 0, 10px, rgba(0,0,0,0.15));
+        cursor: default;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0;
+    @include box-shadow(0, 0, 10px, rgba(0,0,0,0.15));
+    width: 100%;
+
+    thead tr {
+        th {
+            background: $main-color;
+            color: #ffffff;
+            font-size: 1em;
+            text-align: center;
+            font-weight: bold;
+            padding: 8px 20px;
+            margin: 0;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &:last-child {
+                width: 1em;
+                min-width: 1em;
+                max-width: 1em;
+                padding: 0;
+                margin: 0;
+            }
+        }
+
+        &.shadow th {
+            max-width: 100%;
+        }
+    }
+
+    td {
+        position: relative;
+        white-space: nowrap;
+
+        &:after {
+            content: '';
+            width: 1px;
+            height: 60%;
+            top: 20%;
+            background: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            right: 0px;
+        }
+
+        &:last-child {
+            &:after {
+                background: transparent;
+            }
+        }
+    }
+
+    tbody {
+        tr td {
+            background: $white-color;
+            padding: 0;
+            padding: 8px 12px;
+
+            select, input {
+                border: none;
+                padding: 0px;
+                padding-right: 24px;
+                width: 100%;
+                text-align-last:center;
+                text-align: center;
+                background-color: transparent;
+
+                &:focus {
+                    outline-style:none;
+                    box-shadow:none;
+                    border: none;
+                }
+            }
+        }
+
+        tr:last-child {
+            td {
+                &:first-child {
+                    @include bottom-left-corner-radius($default-border-radius);
+                }
+
+                &:last-child {
+                    @include bottom-right-corner-radius($default-border-radius);
+                }
+            }
+        }
+
+        tr:nth-child(even) > td {
+            background-color: $very-light-gray-color;
+        }
+
+        tr:nth-child(odd) > td {
+            background-color: $white-color;
+        }
+
+        tr:hover > td {
+            background-color: $light-color-3;
+        }
+    }
+}
+
+.shadow,
+.shadow th {
+    border-radius: 0px !important;
+    border: none;
+}
+
+.header {
+    padding: 0.4em;
+    width: 100%;
+    background: rgba(245, 245, 245, 0.7);
+    z-index: 5;
+    @include box-shadow(0px, 0px, 8px, rgba(0, 0, 0, 0.3));
+    font-size: 0.8em;
+    overflow: auto;
+
+    #header-logo {
+        height: 2.6em;
+        float: left;
+        padding: 0px 4px 0px 12px;
+    }
+
+    h2 {
+        display: inline-block;
+        padding: 0px 4px;
+        margin: 0 auto;
+        font-size: 2.6em;
+        font-weight: bold;
+    }
+
+    #button-holder-span {
+        position: absolute;
+        display: inline-block;
+        right: 16px;
+        top: 7px;
+
+        .absolute-buttons {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            color: $white-color;
+            background: $main-color;
+            border-bottom: 2px solid $dark-main-color;
+            z-index: 7;
+            @include border-radius($default-border-radius);
+
+            img {
+                box-sizing: content-box;
+                height: 20px;
+                width: 20px;
+                padding: 8px 9px;
+            }
+
+            &:hover {
+                background: $dark-main-color;
+            }
+        }
+
+        #logout-button {
+            padding: 8px 11px 8px 8px;
+        }
+    }
+}
+
+.heading {
+    padding: 8px 16px 7px 16px;
+    width: 100%;
+    background: $main-color;
+    border-top: 1px solid $main-color; 
+    border-bottom: 2px solid $dark-main-color; 
+    display: inline-block;
+    @include top-left-corner-radius($default-border-radius);
+    @include top-right-corner-radius($default-border-radius);
+    @extend .noselect;
+    width: 100%;
+    color: $white-color;
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.text-only-button {
+    display: inline-block;
+    padding-top: 10px;
+    opacity: 0.7;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.popup-window {
+    position: absolute;
+    display: none;
+    z-index: 9999;
+    padding: 0px;
+    height: 96%;
+    padding-bottom: 20px;
+    width: 96%;
+    left: 2%;
+    top: 2%;
+    background-image: url('../images/dimension.png');
+    @include border-radius($default-border-radius);
+    @include box-shadow(0, 0, 10px, rgba(0,0,0,0.9));
+    font-weight: normal;
+
+    h1 {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+}
+
+.close-popup-button {
+    display: inline-block;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    height: 20px;
+    width: 20px;
+    opacity: 0.5;
+    padding: 0;
+    cursor: pointer;
+    background-image: url('../images/cancel-icon.png');
+    background-size: 20px;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+.error-div {
+    padding: 10px 0px;
+    color: $red-color;
+    font-weight: 500;
+}
+
+#progress-bar {
+    position: fixed;
+    margin: 0;
+    margin-top: 20%;
+    left: 50%;
+    margin-left: -110px;
+    opacity: 0;
+    display: none;
+    z-index: 9999;
+    /* Opacity animation */
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#gray-out-div {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: rgba(0,0,0,0.7);
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: none;
+}
+
+#main-toast-wrapper {
+    @extend .noselect;
+    cursor: default;
+    display: none;
+    font-size: 1.1em;
+    max-width: 80vw;
+    font-weight: bold;
+    @include border-radius($default-border-radius);
+    background: rgba(0, 0, 0, 0.8);
+    color: $white-color;
+    position: fixed;
+    bottom: 4vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 10px 16px;
+    z-index: 99999999;
+}
+
+.ui-tooltip, .arrow:after {
+    background: black;
+    border: none;
+    white-space: nowrap;
+}
+
+.ui-tooltip {
+    padding: 6px 12px;
+    font-size: 0.8em;
+    border: none !important;
+    color: $white-color !important;
+    @include border-radius($default-border-radius);
+    @include box-shadow(0, 0, 0, rgba(0,0,0,0));
+}
+
+.arrow {
+    width: 50px;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    bottom: -16px;
+    border: none;
+}
+
+.arrow.top {
+    top: -16px;
+    bottom: auto;
+}
+
+.arrow.left {
+    left: 20%;
+}
+
+.arrow:after {
+    content: "";
+    position: absolute;
+    left: 23px;
+    top: -20px;
+    width: 21px;
+    height: 21px;
+    @include box-shadow(0, 0, 0, rgba(0,0,0,0));
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.arrow.top:after {
+    bottom: -20px;
+    top: auto;
+}
+
+::-webkit-scrollbar {
+    width: 1em;
+    height: 1em;
+}
+
+::-webkit-scrollbar-track {
+    background: $white-color;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $tint-color;
+}

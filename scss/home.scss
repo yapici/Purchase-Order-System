@@ -1,0 +1,26 @@
+@import "variables";
+
+#home-main-body-wrapper {
+    padding: 20px;
+    position: relative;
+
+    #version-span {
+        position: absolute;
+        left: 4px;
+        top: 4px;
+        padding: 0px 4px;
+        font-size: 0.7em;
+        opacity: 0.4;
+        @extend .noselect;
+    }
+
+    #main-error-div {
+        position: absolute;
+        width: 100%;
+        margin: 0 auto;
+        top: 0px;
+        left: 0px;
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+}
